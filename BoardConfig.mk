@@ -135,3 +135,5 @@ RECOVERY_INSTALLER_PATH := device/oneplus/guacamole/installer
 TW_EXCLUDE_TWRPAPP := true
 TW_INCLUDE_REPACKTOOLS := true
 TW_HAS_EDL_MODE := true
+TWRP_INCLUDE_LOGCAT := true
+TARGET_USES_LOGD := true
