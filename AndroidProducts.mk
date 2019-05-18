@@ -15,4 +15,4 @@
 #
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/omni_fajita.mk
+    $(LOCAL_DIR)/omni_guacamole.mk

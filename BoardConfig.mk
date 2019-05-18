@@ -40,31 +40,31 @@ ENABLE_CPUSETS := true
 ENABLE_SCHEDBOOST := true
 
 # Bootloader
-TARGET_BOOTLOADER_BOARD_NAME := sdm845
+TARGET_BOOTLOADER_BOARD_NAME := msmnile
 TARGET_NO_BOOTLOADER := true
 TARGET_USES_UEFI := true
 
 # Kernel
-BOARD_KERNEL_CMDLINE := androidboot.hardware=qcom androidboot.console=ttyMSM0 video=vfb:640x400,bpp=32,memsize=3072000 msm_rtb.filter=0x237 ehci-hcd.park=3 lpm_levels.sleep_disabled=1 service_locator.enable=1 swiotlb=2048 androidboot.configfs=true androidboot.usbcontroller=a600000.dwc3 firmware_class.path=/vendor/firmware_mnt/image loop.max_part=7
+BOARD_KERNEL_CMDLINE := androidboot.hardware=qcom androidboot.console=ttyMSM0 androidboot.memcg=1 lpm_levels.sleep_disabled=1 video=vfb:640x400,bpp=32,memsize=3072000 msm_rtb.filter=0x237 service_locator.enable=1 swiotlb=2048 firmware_class.path=/vendor/firmware_mnt/image loop.max_part=7 androidboot.usbcontroller=a600000.dwc3
 BOARD_KERNEL_CMDLINE += skip_override androidboot.fastboot=1
 BOARD_KERNEL_BASE := 0x00000000
 BOARD_KERNEL_PAGESIZE := 4096
-TARGET_PREBUILT_KERNEL := device/oneplus/fajita/prebuilt/Image.gz-dtb
+TARGET_PREBUILT_KERNEL := device/oneplus/guacamole/prebuilt/Image.gz-dtb
 
 # Platform
-TARGET_BOARD_PLATFORM := sdm845
-TARGET_BOARD_PLATFORM_GPU := qcom-adreno630
-QCOM_BOARD_PLATFORMS += sdm845
+TARGET_BOARD_PLATFORM := msmnile
+TARGET_BOARD_PLATFORM_GPU := qcom-adreno640
+QCOM_BOARD_PLATFORMS += msmnile
 
 # Partitions
 BOARD_FLASH_BLOCK_SIZE := 262144
 
-BOARD_BOOTIMAGE_PARTITION_SIZE := 67108864
-BOARD_RECOVERYIMAGE_PARTITION_SIZE := 67108864
-BOARD_SYSTEMIMAGE_PARTITION_SIZE := 2998927360
+BOARD_BOOTIMAGE_PARTITION_SIZE := 100663296
+BOARD_RECOVERYIMAGE_PARTITION_SIZE := 100663296
+BOARD_SYSTEMIMAGE_PARTITION_SIZE := 3640655872
 BOARD_SYSTEMIMAGE_JOURNAL_SIZE := 0
 BOARD_SYSTEMIMAGE_EXTFS_INODE_COUNT := 4096
-BOARD_USERDATAIMAGE_PARTITION_SIZE := 118112366592
+BOARD_USERDATAIMAGE_PARTITION_SIZE := 115601780736
 BOARD_USERDATAIMAGE_FILE_SYSTEM_TYPE := ext4
 BOARD_VENDORIMAGE_PARTITION_SIZE := 1073741824
 TARGET_USERIMAGES_USE_EXT4 := true
@@ -76,8 +76,8 @@ BOARD_USES_RECOVERY_AS_BOOT := true
 BOARD_BUILD_SYSTEM_ROOT_IMAGE := true
 
 # Partitions (listed in the file) to be wiped under recovery.
-TARGET_RECOVERY_WIPE := device/oneplus/fajita/recovery.wipe
-TARGET_RECOVERY_FSTAB := device/oneplus/fajita/recovery.fstab
+TARGET_RECOVERY_WIPE := device/oneplus/guacamole/recovery.wipe
+TARGET_RECOVERY_FSTAB := device/oneplus/guacamole/recovery.fstab
 
 
 # Workaround for error copying vendor files to recovery ramdisk
@@ -125,14 +125,13 @@ AB_OTA_PARTITIONS += \
 PLATFORM_SECURITY_PATCH := 2025-12-31
 TW_INCLUDE_CRYPTO := true
 TW_INCLUDE_CRYPTO_FBE := true
+BOARD_USES_METADATA_PARTITION := true
 
 # Extras
 BOARD_SUPPRESS_SECURE_ERASE := true
 TW_USE_LEDS_HAPTICS := true
 USE_RECOVERY_INSTALLER := true
-RECOVERY_INSTALLER_PATH := device/oneplus/fajita/installer
+RECOVERY_INSTALLER_PATH := device/oneplus/guacamole/installer
 TW_EXCLUDE_TWRPAPP := true
 TW_INCLUDE_REPACKTOOLS := true
-TW_Y_OFFSET := 80
-TW_H_OFFSET := -80
 TW_HAS_EDL_MODE := true
