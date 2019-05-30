@@ -36,3 +36,7 @@ PRODUCT_BUILD_PROP_OVERRIDES += \
     PRODUCT_NAME=OnePlus7Pro \
     BUILD_PRODUCT=OnePlus7Pro \
     TARGET_DEVICE=OnePlus7Pro
+
+# HACK: Set vendor patch level
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.vendor.build.security_patch=2099-12-31
