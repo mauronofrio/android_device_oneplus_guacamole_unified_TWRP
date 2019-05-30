@@ -5,12 +5,12 @@
 /vendor		ext4	/dev/block/bootdevice/by-name/vendor					flags=slotselect;display="Vendor";backup=1;wipeingui
 /vendor_image	emmc	/dev/block/bootdevice/by-name/vendor					flags=slotselect
 /metadata	ext4	/dev/block/bootdevice/by-name/metadata 					
-/data		ext4	/dev/block/bootdevice/by-name/userdata					flags=latemount;fileencryption=ice:aes-256-cts;keydirectory=/metadata/vold/metadata_encryption
+/data		ext4	/dev/block/bootdevice/by-name/userdata					flags=fileencryption=ice:aes-256-cts;keydirectory=/metadata/vold/metadata_encryption
 /firmware	vfat	/dev/block/bootdevice/by-name/modem					flags=slotselect;display="Firmware";mounttodecrypt;fsflags=ro
 /misc		emmc	/dev/block/bootdevice/by-name/misc
-/vendor/firmware_mnt		emmc	/dev/block/bootdevice/by-name/modem					flags=slotselect;backup=1;display="Modem"
-/vendor/bt_firmware	emmc	/dev/block/bootdevice/by-name/bluetooth					flags=slotselect;backup=1;subpartitionof=/modem
-/vendor/dsp		emmc	/dev/block/bootdevice/by-name/dsp					flags=slotselect;backup=1;subpartitionof=/modem
+/modem		emmc	/dev/block/bootdevice/by-name/modem					flags=slotselect;backup=1;display="Modem"
+/bluetooth	emmc	/dev/block/bootdevice/by-name/bluetooth					flags=slotselect;backup=1;subpartitionof=/modem
+/dsp		emmc	/dev/block/bootdevice/by-name/dsp					flags=slotselect;backup=1;subpartitionof=/modem
 /efs1		emmc	/dev/block/bootdevice/by-name/modemst1					flags=backup=1;display=EFS
 /efs2		emmc	/dev/block/bootdevice/by-name/modemst2					flags=backup=1;subpartitionof=/efs1
 /efsc		emmc	/dev/block/bootdevice/by-name/fsc					flags=backup=1;subpartitionof=/efs1
