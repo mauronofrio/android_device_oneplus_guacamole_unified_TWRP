@@ -61,6 +61,6 @@ To test it:
 fastboot boot out/target/product/guacamole/recovery.img
 ```
 
-Kernel Source: using precompiled kernel
+Kernel Source: https://gitlab.com/HolyAngel/op7
 ## Credits
 I want to say a big thanks to @twinnfamous
