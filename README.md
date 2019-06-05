@@ -64,3 +64,4 @@ fastboot boot out/target/product/guacamole/recovery.img
 Kernel Source: https://gitlab.com/HolyAngel/op7
 ## Credits
 I want to say a big thanks to @twinnfamous
+Thanks to @dianlujitao for the base multidevice commit: https://github.com/TeamWin/android_device_oneplus_oneplus3/tree/android-9.0/init
