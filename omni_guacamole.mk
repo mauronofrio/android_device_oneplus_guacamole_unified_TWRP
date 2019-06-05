@@ -29,13 +29,19 @@ $(call inherit-product, device/oneplus/guacamole/device.mk)
 PRODUCT_DEVICE := guacamole
 PRODUCT_NAME := omni_guacamole
 PRODUCT_BRAND := OnePlus
-PRODUCT_MODEL := OnePlus GM1917
+PRODUCT_MODEL := GM1917
 PRODUCT_MANUFACTURER := OnePlus
 
 PRODUCT_BUILD_PROP_OVERRIDES += \
     PRODUCT_NAME=OnePlus7Pro \
     BUILD_PRODUCT=OnePlus7Pro \
     TARGET_DEVICE=OnePlus7Pro
+
+PRODUCT_SYSTEM_PROPERTY_BLACKLIST += \
+    ro.product.model \
+    ro.product.device \
+    ro.product.name \
+    ro.display.series
 
 # HACK: Set vendor patch level
 PRODUCT_PROPERTY_OVERRIDES += \

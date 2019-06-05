@@ -1,5 +1,5 @@
 #
-# Copyright 2016 The Android Open Source Project
+# Copyright (C) 2017-2018 The Android Open Source Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -14,17 +14,15 @@
 # limitations under the License.
 #
 
-# This contains the module build definitions for the hardware-specific
-# components for this device.
-#
-# As much as possible, those components should be built unconditionally,
-# with device-specific names to avoid collisions, to avoid device-specific
-# bitrot and build breakages. Building a component unconditionally does
-# *not* include it on all devices, so it is safe even with hardware-specific
-# components.
-
 LOCAL_PATH := $(call my-dir)
 
-ifneq ($(filter guacamole,$(TARGET_DEVICE)),)
-include $(call all-makefiles-under,$(LOCAL_PATH))
-endif
+include $(CLEAR_VARS)
+
+LOCAL_MODULE_TAGS := optional
+LOCAL_C_INCLUDES := \
+    system/core/base/include \
+    system/core/init
+LOCAL_SRC_FILES := init_oneplus7pro.cpp
+LOCAL_MODULE := libinit_oneplus7pro
+
+include $(BUILD_STATIC_LIBRARY)

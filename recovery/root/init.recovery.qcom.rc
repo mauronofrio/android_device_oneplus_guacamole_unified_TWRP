@@ -33,6 +33,10 @@ on fs
     symlink /dev/block/bootdevice/by-name/oem_dycnvbk /dev/block/bootdevice/by-name/oem_dycnvbk_a
     symlink /dev/block/bootdevice/by-name/oem_dycnvbk /dev/block/bootdevice/by-name/oem_dycnvbk_b
 
+    # this is for OnePlus 7 Pro 5g stock rom flashing
+    symlink /dev/block/bootdevice/by-name/mdm_oem_stanvbk /dev/block/bootdevice/by-name/mdm_oem_stanvbk_a
+    symlink /dev/block/bootdevice/by-name/mdm_oem_stanvbk /dev/block/bootdevice/by-name/mdm_oem_stanvbk_b
+
     # this is not good way for Hydrogen payload reserve
     write  /dev/block/bootdevice/by-name/reserve 0
     symlink /dev/block/bootdevice/by-name/reserve /dev/block/bootdevice/by-name/reserve_a
