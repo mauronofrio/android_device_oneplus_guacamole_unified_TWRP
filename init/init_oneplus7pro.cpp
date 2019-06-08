@@ -47,6 +47,10 @@ void load_op7pro(const char *model) {
     property_set("ro.display.series", "OnePlus 7 Pro");
 }
 
+static bool file_exist (const std::string& name) {
+    return ( access( name.c_str(), F_OK ) == 0 );
+}
+
 void load_op7pro5g(const char *model) {
     property_set("ro.product.model", model);
     property_set("ro.build.product", "OnePlus7ProNR");
@@ -60,9 +64,15 @@ void vendor_load_properties() {
 
     switch (rf_version) {
     case 1:
-        /* 5g Europe */
-        load_op7pro5g("GM1920");
-        break;
+        if (file_exist("/dev/block/bootdevice/by-name/5gdump")){
+            /* 5g Europe */
+            load_op7pro5g("GM1920");
+            break;
+            } else {
+            /* China */
+            load_op7pro("GM1910");
+            break;
+            }
     case 2:
         /* T-Mobile */
         load_op7pro("GM1915");
