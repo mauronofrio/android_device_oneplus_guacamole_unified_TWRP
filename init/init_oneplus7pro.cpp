@@ -47,10 +47,6 @@ void load_op7pro(const char *model) {
     property_set("ro.display.series", "OnePlus 7 Pro");
 }
 
-static bool file_exist (const std::string& name) {
-    return ( access( name.c_str(), F_OK ) == 0 );
-}
-
 void load_op7pro5g(const char *model) {
     property_set("ro.product.model", model);
     property_set("ro.build.product", "OnePlus7ProNR");
@@ -59,39 +55,73 @@ void load_op7pro5g(const char *model) {
     property_set("ro.display.series", "OnePlus 7 Pro 5G");
 }
 
-void vendor_load_properties() {
-    int rf_version = stoi(android::base::GetProperty("ro.boot.rf_version", ""));
+void load_op7(const char *model) {
+    property_set("ro.product.model", model);
+    property_set("ro.build.product", "OnePlus7");
+    property_set("ro.product.device", "OnePlus7");
+    property_set("ro.vendor.product.device", "OnePlus7");
+    property_set("ro.display.series", "OnePlus 7");
+}
 
-    switch (rf_version) {
-    case 1:
-        if (file_exist("/dev/block/bootdevice/by-name/5gdump")){
-            /* 5g Europe */
-            load_op7pro5g("GM1920");
-            break;
-            } else {
-            /* China */
-            load_op7pro("GM1910");
-            break;
-            }
-    case 2:
-        /* T-Mobile */
-        load_op7pro("GM1915");
-        break;
-    case 3:
-        /* India*/
-        load_op7pro("GM1911");
-        break;
-    case 4:
-        /* Europe */
-        load_op7pro("GM1913");
-        break;
-    case 5:
-        /* Global / US Unlocked */
-        load_op7pro("GM1917");
-        break;
-    default:
-        LOG(ERROR) << __func__ << ": unexcepted rf version!";
-    }
+void vendor_load_properties() {
+    int project_name = stoi(android::base::GetProperty("ro.boot.project_name", ""));
+    int rf_version = stoi(android::base::GetProperty("ro.boot.rf_version", ""));
+    switch(project_name){
+		case 18821:
+			switch (rf_version){
+				case 1:
+					/* China*/
+					load_op7pro("GM1910");
+					break;
+				case 3:
+					/* India*/
+					load_op7pro("GM1911");
+					break;
+				case 4:
+					/* Europe */
+					load_op7pro("GM1913");
+					break;
+				case 5:
+					/* Global / US Unlocked */
+					load_op7pro("GM1917");
+					break;
+				default:
+					/* Generic*/
+					load_op7pro("GM1917");
+					break;
+			}
+		case 18831:
+			/* T-Mobile */
+			load_op7pro("GM1915");
+			break;
+		case 18827:
+			/* 5g Europe */
+			load_op7pro5g("GM1920");
+			break;
+		case 18857:
+			switch (rf_version){
+				case 1:
+					/* China*/
+					load_op7("GM1900");
+					break;
+				case 3:
+					/* India*/
+					load_op7("GM1901");
+					break;
+				case 4:
+					/* Europe */
+					load_op7("GM1903");
+					break;
+				case 5:
+					/* Global / US Unlocked */
+					load_op7("GM1907");
+					break;
+				default:
+					/* Generic */
+					load_op7("GM1907");
+					break;
+			}
+	}
 }
 
 }  // namespace init
