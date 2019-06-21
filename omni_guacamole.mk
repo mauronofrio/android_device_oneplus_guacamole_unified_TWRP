@@ -41,6 +41,7 @@ PRODUCT_SYSTEM_PROPERTY_BLACKLIST += \
     ro.product.model \
     ro.product.device \
     ro.product.name \
+    ro.build.product \
     ro.display.series
 
 # HACK: Set vendor patch level

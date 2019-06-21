@@ -41,6 +41,7 @@ namespace init {
 
 void load_op7pro(const char *model) {
     property_set("ro.product.model", model);
+    property_set("ro.product.name", "OnePlus7Pro");
     property_set("ro.build.product", "OnePlus7Pro");
     property_set("ro.product.device", "OnePlus7Pro");
     property_set("ro.vendor.product.device", "OnePlus7Pro");
@@ -49,6 +50,7 @@ void load_op7pro(const char *model) {
 
 void load_op7pro5g(const char *model) {
     property_set("ro.product.model", model);
+    property_set("ro.product.name", "OnePlus7ProNR");
     property_set("ro.build.product", "OnePlus7ProNR");
     property_set("ro.product.device", "OnePlus7ProNR");
     property_set("ro.vendor.product.device", "OnePlus7ProNR");
@@ -57,6 +59,7 @@ void load_op7pro5g(const char *model) {
 
 void load_op7(const char *model) {
     property_set("ro.product.model", model);
+    property_set("ro.product.name", "OnePlus7");
     property_set("ro.build.product", "OnePlus7");
     property_set("ro.product.device", "OnePlus7");
     property_set("ro.vendor.product.device", "OnePlus7");
