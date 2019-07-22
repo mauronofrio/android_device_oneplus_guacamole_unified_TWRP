@@ -37,11 +37,6 @@ on fs
     symlink /dev/block/bootdevice/by-name/mdm_oem_stanvbk /dev/block/bootdevice/by-name/mdm_oem_stanvbk_a
     symlink /dev/block/bootdevice/by-name/mdm_oem_stanvbk /dev/block/bootdevice/by-name/mdm_oem_stanvbk_b
 
-    # this is not good way for Hydrogen payload reserve
-    write  /dev/block/bootdevice/by-name/reserve 0
-    symlink /dev/block/bootdevice/by-name/reserve /dev/block/bootdevice/by-name/reserve_a
-    symlink /dev/block/bootdevice/by-name/reserve /dev/block/bootdevice/by-name/reserve_b
-
     chmod 0660 /dev/qseecom
     chown system drmrpc /dev/qseecom
     chmod 0664 /dev/ion
@@ -122,6 +117,13 @@ service time_daemon /sbin/time_daemon
     disabled
     seclabel u:r:recovery:s0
 
+service patchreserve /sbin/patchreserve.sh
+    user root
+    group root
+    disabled
+    oneshot
+    seclabel u:r:recovery:s0
+
 # This helps fix ld.config.txt errors from the linker on Android 8.1+
 service ldconfigtxt /sbin/touch /sbin/ld.config.txt
     oneshot
@@ -155,6 +157,10 @@ on property:vendor.sys.listeners.registered=true
     start gatekeeper-1-0
     start servicemanager
     restart time_daemon
+    start patchreserve
 
 on property:sys.usb.config=mtp,adb
     restart time_daemon
+
+on property:twrp.mount_to_decrypt=1
+    start patchreserve
