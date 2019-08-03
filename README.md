@@ -1,4 +1,4 @@
-# Device Tree for OnePlus 7 Pro (guacamole)
+# Device Tree for OnePlus 7/7 Pro/7 Pro 5G (guacamole, guacamoleb, guacamolec)
 
 The OnePlus 7 Pro (codenamed _"guacamole"_) is a flagship smartphone from OnePlus.
 It was released in May 2019.
@@ -11,20 +11,15 @@ It was released in May 2019.
 First download omni-9.0 tree:
 
 ```
-repo init --depth=1 -u https://github.com/omnirom/android.git -b android-9.0
+repo init -u git://github.com/minimal-manifest-twrp/platform_manifest_twrp_omni.git -b twrp-9.0
 ```
 Then add these string to .repo/manifests/remove.xml
 
-```
-<remove-project name="platform/bootable/recovery" />
-```
 
 Then add these projects to .repo/local_manifests/roomservice.xml (If you don't have it, you can add them to .repo/manifest.xml): 
 
 ```xml
 <project name="mauronofrio/android_device_oneplus_guacamole_TWRP" path="device/oneplus/guacamole" remote="github" revision="android-9.0" />
-<project name="mauronofrio/android_bootable_recovery" path="bootable/recovery" remote="github" revision="android-9.0" />
-<project name="android_external_busybox" path="external/busybox" remote="TeamWin" revision="android-9.0" />
 ```
 
 Now you can sync your source:
@@ -33,17 +28,7 @@ Now you can sync your source:
 repo sync
 ```
 
-To auotomatic make the twrp installer, you need to import this commit in the build path: https://gerrit.omnirom.org/#/c/android_build/+/33182/
-
-
-To make all works you need to modify the buildinfo.sh in build/tools
-echo "ro.build.version.release=$PLATFORM_VERSION"
-echo "ro.build.version.security_patch=$PLATFORM_SECURITY_PATCH"
-to
-echo "ro.build.version.release_orig=$PLATFORM_VERSION"
-echo "ro.build.version.security_patch_orig=$PLATFORM_SECURITY_PATCH"
-
-And you need to increase the PLATFORM_VERSION to 16.1.0 in build/core/version_defaults.mk to override Google's anti-rollback features (This actually i don't know if is always needed)
+To auotomatic make the twrp installer, you need to import this commit in the build/make path: https://gerrit.omnirom.org/#/c/android_build/+/33182/
 
 Finally execute these:
 
