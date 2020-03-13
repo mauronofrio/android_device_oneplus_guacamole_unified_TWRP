@@ -97,6 +97,17 @@ void vendor_load_properties() {
 			/* T-Mobile */
 			load_op7pro("GM1915");
 			break;
+		case 18825:
+			/* 5g USA*/
+			switch (rf_version){
+				case 5:
+					/* Sprint*/
+					load_op7pro5g("GM1925");
+					break;
+				default:
+					load_op7pro5g("GM1925");
+					break;
+				}
 		case 18827:
 			/* 5g Europe */
 			load_op7pro5g("GM1920");
@@ -124,6 +135,10 @@ void vendor_load_properties() {
 					load_op7("GM1907");
 					break;
 			}
+		default:
+			/* Generic */
+			load_op7pro("GM1917");
+			break;
 	}
 }
 
