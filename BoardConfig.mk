@@ -79,15 +79,9 @@ BOARD_BUILD_SYSTEM_ROOT_IMAGE := true
 TARGET_RECOVERY_WIPE := device/oneplus/guacamole/recovery.wipe
 TARGET_RECOVERY_FSTAB := device/oneplus/guacamole/recovery.fstab
 
-
 # Workaround for error copying vendor files to recovery ramdisk
 BOARD_VENDORIMAGE_FILE_SYSTEM_TYPE := ext4
 TARGET_COPY_OUT_VENDOR := vendor
-
-#Init
-TARGET_INIT_VENDOR_LIB := libinit_oneplus7pro
-TARGET_RECOVERY_DEVICE_MODULES := libinit_oneplus7pro
-TARGET_PLATFORM_DEVICE_BASE := /devices/soc/
 
 # Recovery
 BOARD_HAS_LARGE_FILESYSTEM := true
