@@ -23,6 +23,8 @@
 # *not* include it on all devices, so it is safe even with hardware-specific
 # components.
 
+LOCAL_PATH := device/oneplus/guacamole
+
 # Architecture
 TARGET_ARCH := arm64
 TARGET_ARCH_VARIANT := armv8-2a
@@ -78,7 +80,7 @@ BOARD_BUILD_SYSTEM_ROOT_IMAGE := true
 
 # Partitions (listed in the file) to be wiped under recovery.
 TARGET_RECOVERY_WIPE := device/oneplus/guacamole/recovery.wipe
-TARGET_RECOVERY_FSTAB := device/oneplus/guacamole/recovery.fstab
+TARGET_RECOVERY_FSTAB := $(LOCAL_PATH)/recovery.fstab
 
 # Workaround for error copying vendor files to recovery ramdisk
 BOARD_VENDORIMAGE_FILE_SYSTEM_TYPE := ext4
@@ -143,3 +145,8 @@ TARGET_USES_LOGD := true
 TW_EXCLUDE_TWRPAPP := true
 TW_NO_USB_STORAGE := true
 #PLATFORM_VERSION := 16.1.0
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/recovery/root/etc/twrp.fstab:$(TARGET_RECOVERY_ROOT_OUT)/system/etc/twrp.fstab \
+    $(LOCAL_PATH)/recovery/root/init.recovery.usb.rc:$(TARGET_RECOVERY_ROOT_OUT)/init.recovery.usb.rc \
+    $(LOCAL_PATH)/recovery/root/ueventd.qcom.rc:$(TARGET_RECOVERY_ROOT_OUT)/ueventd.qcom.rc \
+    $(LOCAL_PATH)/recovery/root/*:$(TARGET_RECOVERY_ROOT_OUT)/*
