@@ -47,12 +47,17 @@ TARGET_NO_BOOTLOADER := true
 TARGET_USES_UEFI := true
 
 # Kernel
-BOARD_KERNEL_CMDLINE := androidboot.hardware=qcom androidboot.console=ttyMSM0 androidboot.memcg=1 lpm_levels.sleep_disabled=1 video=vfb:640x400,bpp=32,memsize=3072000 msm_rtb.filter=0x237 service_locator.enable=1 swiotlb=2048 firmware_class.path=/vendor/firmware_mnt/image loop.max_part=7 androidboot.usbcontroller=a600000.dwc3
-BOARD_KERNEL_CMDLINE += skip_override androidboot.fastboot=1
+BOARD_KERNEL_CMDLINE := androidboot.hardware=qcom androidboot.console=ttyMSM0 androidboot.memcg=1 lpm_levels.sleep_disabled=1 video=vfb:640x400,bpp=32,memsize=3072000 msm_rtb.filter=0x237 service_locator.enable=1 swiotlb=2048 firmware_class.path=/vendor/firmware_mnt/image loop.max_part=7 androidboot.usbcontroller=a600000.dwc3 skip_override androidboot.fastboot=1
 BOARD_KERNEL_BASE := 0x00000000
 BOARD_KERNEL_PAGESIZE := 4096
-TARGET_PREBUILT_KERNEL := device/oneplus/guacamole/prebuilt/Image.gz-dtb
-BOARD_KERNEL_IMAGE_NAME := Image.gz-dtb
+TARGET_PREBUILT_KERNEL := device/oneplus/guacamole/prebuilt/Image.gz
+BOARD_BOOT_HEADER_VERSION := 2
+BOARD_KERNEL_IMAGE_NAME := Image
+BOARD_INCLUDE_DTB_IN_BOOTIMG := true
+BOARD_PREBUILT_DTBIMAGE_DIR := device/oneplus/guacamole/prebuilt/dtb.img
+BOARD_DTB_OFFSET := 0x01f00000
+BOARD_MKBOOTIMG_ARGS += --header_version $(BOARD_BOOT_HEADER_VERSION) --dtb_offset $(BOARD_DTB_OFFSET) --dtb $(BOARD_PREBUILT_DTBIMAGE_DIR)
+
 
 # Platform
 TARGET_BOARD_PLATFORM := msmnile
@@ -146,8 +151,3 @@ TARGET_USES_LOGD := true
 TW_EXCLUDE_TWRPAPP := true
 TW_NO_USB_STORAGE := true
 #PLATFORM_VERSION := 16.1.0
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/recovery/root/etc/twrp.fstab:$(TARGET_RECOVERY_ROOT_OUT)/system/etc/twrp.fstab \
-    $(LOCAL_PATH)/recovery/root/init.recovery.usb.rc:$(TARGET_RECOVERY_ROOT_OUT)/init.recovery.usb.rc \
-    $(LOCAL_PATH)/recovery/root/ueventd.qcom.rc:$(TARGET_RECOVERY_ROOT_OUT)/ueventd.qcom.rc \
-    $(LOCAL_PATH)/recovery/root/*:$(TARGET_RECOVERY_ROOT_OUT)/*
