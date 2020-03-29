@@ -34,7 +34,9 @@ PRODUCT_STATIC_BOOT_CONTROL_HAL := \
 # Boot control HAL
 PRODUCT_PACKAGES += \
     android.hardware.boot@1.0-impl \
-    android.hardware.boot@1.0-service \
+    android.hardware.boot@1.0-service
+
+PRODUCT_COPY_FILES += $(call find-copy-subdir-files,*,$(LOCAL_PATH)/recovery/root,recovery/root)
 
 
 
