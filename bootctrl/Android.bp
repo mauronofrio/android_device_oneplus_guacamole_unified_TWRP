@@ -14,6 +14,10 @@
 // limitations under the License.
 //
 
+soong_namespace {
+    imports: ["hardware/qcom/bootctrl"],
+}
+
 cc_library {
     name: "bootctrl.msmnile",
     defaults: ["bootctrl_hal_defaults"],
