@@ -46,6 +46,8 @@ TARGET_BOOTLOADER_BOARD_NAME := msmnile
 TARGET_NO_BOOTLOADER := true
 TARGET_USES_UEFI := true
 
+BUILD_BROKEN_DUP_RULES := true
+
 # Kernel
 BOARD_KERNEL_CMDLINE := androidboot.hardware=qcom androidboot.console=ttyMSM0 androidboot.memcg=1 lpm_levels.sleep_disabled=1 video=vfb:640x400,bpp=32,memsize=3072000 msm_rtb.filter=0x237 service_locator.enable=1 swiotlb=2048 firmware_class.path=/vendor/firmware_mnt/image loop.max_part=7 androidboot.usbcontroller=a600000.dwc3 skip_override androidboot.fastboot=1
 BOARD_KERNEL_BASE := 0x00000000
@@ -131,10 +133,11 @@ AB_OTA_PARTITIONS += \
     dtbo 
 
 # Encryption
-PLATFORM_SECURITY_PATCH := 2099-12-31
-#TW_INCLUDE_CRYPTO := true
-#TW_INCLUDE_CRYPTO_FBE := true
-#TW_INCLUDE_FBE_METADATA_DECRYPT := true
+VENDOR_SECURITY_PATCH := 2099-12-31
+PLATFORM_SECURITY_PATCH := $(VENDOR_SECURITY_PATCH)
+TW_INCLUDE_CRYPTO := true
+TW_INCLUDE_CRYPTO_FBE := true
+TW_INCLUDE_FBE_METADATA_DECRYPT := true
 BOARD_USES_METADATA_PARTITION := true
 
 # Extras
@@ -150,4 +153,4 @@ TWRP_INCLUDE_LOGCAT := true
 TARGET_USES_LOGD := true
 TW_EXCLUDE_TWRPAPP := true
 TW_NO_USB_STORAGE := true
-#PLATFORM_VERSION := 16.1.0
+PLATFORM_VERSION := 16.1.0

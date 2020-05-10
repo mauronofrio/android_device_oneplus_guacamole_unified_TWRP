@@ -27,7 +27,10 @@ PRODUCT_PACKAGES += \
     android.hardware.boot@1.0-impl-wrapper \
     android.hardware.boot@1.0-impl-recovery \
     bootctrl.msmnile \
-    bootctrl.msmnile.recovery
+    bootctrl.msmnile.recovery \
+
+PRODUCT_HOST_PACKAGES += \
+    libandroidicu
 
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += \
