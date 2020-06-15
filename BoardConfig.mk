@@ -74,6 +74,7 @@ TARGET_NO_KERNEL := false
 TARGET_NO_RECOVERY := false
 BOARD_USES_RECOVERY_AS_BOOT := true
 BOARD_BUILD_SYSTEM_ROOT_IMAGE := true
+USE_COMMON_BOOTCTRL := false
 
 # Partitions (listed in the file) to be wiped under recovery.
 TARGET_RECOVERY_WIPE := device/oneplus/guacamole/recovery.wipe
