@@ -1,4 +1,4 @@
-#!/sbin/sh
+#!/system/bin/sh
 # This script is needed to permananetly keep reserve_a and reserve_b fake partitions and /data/reserve/reserve.img and to keep india_a and india_b fake partitions and /data/india/india.img.
 
 n=1

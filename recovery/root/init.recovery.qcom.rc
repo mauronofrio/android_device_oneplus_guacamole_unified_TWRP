@@ -59,7 +59,7 @@ service prepdecrypt /sbin/prepdecrypt.sh
     group root
     seclabel u:r:recovery:s0
 
-service hwservicemanager /sbin/hwservicemanager
+service hwservicemanager /system/bin/hwservicemanager
     user root
     group root
     disabled
@@ -72,13 +72,13 @@ service boot-1-0 /sbin/android.hardware.boot@1.0-service
     disabled
     seclabel u:r:recovery:s0
 
-service servicemanager /sbin/servicemanager
+service servicemanager /system/bin/servicemanager
     user root
     group root readproc
     disabled
     seclabel u:r:recovery:s0
 
-service keystore_auth /sbin/keystore_auth
+service keystore_auth /system/bin/keystore_auth
     oneshot
     user system
     group root
@@ -86,7 +86,7 @@ service keystore_auth /sbin/keystore_auth
     seclabel u:r:recovery:s0
 
 # keystore is started and stopped on demand by TWRP
-service keystore /sbin/keystore /tmp/misc/keystore
+service keystore /system/bin/keystore /tmp/misc/keystore
     user root
     group root drmrpc readproc
     disabled
@@ -136,7 +136,7 @@ service ldconfigtxt /sbin/touch /sbin/ld.config.txt
     seclabel u:r:recovery:s0
 
 on boot
-	export LD_CONFIG_FILE /sbin/ld.config.txt
+#	export LD_CONFIG_FILE /sbin/ld.config.txt
     setprop sys.usb.config adb
     write /proc/touchpanel/gesture_enable 1
     write /sys/devices/platform/soc/c440000.qcom,spmi/spmi-0/spmi0-02/c440000.qcom,spmi:qcom,pmi8998@2:qcom,qpnp-smb2/power_supply/usb/otg_switch 1
